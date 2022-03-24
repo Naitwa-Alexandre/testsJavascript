@@ -1,0 +1,24 @@
+MOCK:
+    - mock é o objeto necessário para o teste funcionar
+
+    cenário:
+        ponto A
+        ponto B
+        ponto C
+
+        A => B
+
+        o mock para rodar o teste do B => C eh o resultado do Ponto A para o Ponto B
+        B => C
+
+
+        errado pois o teste esta duplicado
+        A => B => C
+
+STUB:
+    - stub serve para interceptar chamadas externas
+        -garantir que nosso teste seja OFFLINE sem (systema, internet ou memoria)
+
+SPY:
+    - spy eh um tipo de stub, mas eh usado para validar como a funcao foi chamada
+        e quantas vezes foi chamada

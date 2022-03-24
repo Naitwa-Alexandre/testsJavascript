@@ -48,16 +48,16 @@ process.on('exit', () => callTracker.verify());
         }
     }
 
-    const spyOnCreate = callTracker.calls(1);
-    const onCreate = (msg) => {
-        spyOnCreate(msg)
+    const fn = (msg) => {
         assert.deepStrictEqual(msg.id, params.id, 'id should be the same');
         assert.deepStrictEqual(msg.price, params.price, 'price should be the same');
         assert.deepStrictEqual(msg.description, params.description.toLocaleUpperCase(), 'description should be the same');
     }
 
+    const spyOnCreate = callTracker.calls(fn, 1);
+
     const product = new Product({
-        onCreate,
+        onCreate: spyOnCreate,
         service: servirceStub
     });
 
